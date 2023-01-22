@@ -7,16 +7,18 @@ import { DatabaseModule } from './database/database.module';
 import { OrdersModule } from './orders/orders.module';
 
 @Module({
-  imports: [DatabaseModule, CustomersModule, OrdersModule],
+  imports: [CustomersModule, OrdersModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
 
 /*
-
+//WORKING
 @Module({
   imports: [
+    CustomersModule,
+    OrdersModule,
     KnexModule.forRoot({
       config: {
         client: 'mysql',
@@ -27,21 +29,10 @@ export class AppModule {}
           password: 'password',
           database: 'knex_nest_2',
         },
-        migrations: {
-          directory: __dirname + '/src/db/migrations',
-          extension: 'ts',
-        },
-        seeds: {
-          directory: __dirname + '/src/db/seeds',
-        },
       },
     }),
-    CustomersModule,
-    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
-
-*/
+export class AppModule {}*/

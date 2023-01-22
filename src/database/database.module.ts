@@ -1,20 +1,10 @@
 import { Module } from '@nestjs/common';
 import { KnexModule } from 'nest-knexjs';
+import { databaseProviders } from './database.providers';
 
 @Module({
-  imports: [
-    KnexModule.forRoot({
-      config: {
-        client: 'mysql',
-        connection: {
-          host: 'localhost',
-          port: 3306,
-          user: 'root',
-          password: 'password',
-          database: 'knex_nest_2',
-        },
-      },
-    }),
-  ],
+  imports: [],
+  providers: [...databaseProviders],
+  exports: [...databaseProviders],
 })
 export class DatabaseModule {}
