@@ -1,25 +1,46 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectConnection } from 'nest-knexjs';
+import { BaseValidator } from 'src/core/validator/basevalidator';
+import { InjectModel } from 'src/decorators/injectModel';
+import { CreateCustomerDto } from './dtos/create-customer.dto';
+import { CustomerModel } from './models/customers.model';
+import { CustomerContract } from './repositories/contracts/customers.contract';
 
 @Injectable()
 export class CustomersService {
-  //constructor(@InjectConnection() private readonly knex: Knex) {}  // working
+  constructor(
+    @Inject('Customer_Repository') private customer_repo: CustomerContract,
+    private validator: BaseValidator,
+  ) {}
+  async fetchById(id: number) {
+    const data = this.customer_repo.findById(id);
+    return data;
+  }
 
-  constructor(@Inject('DATABASE_CONNECTION') private readonly knex: Knex) {}
-  async test() {
-    const data = await this.knex.select('*').from('customers');
-    /*await this.knex
-      .select(
-        'customers.first_name',
-        'customers.last_name',
-        'orders.order_date',
-        'orders.amount',
-      )
-      .from('customers')
-      .join('orders', function () {
-        this.on('orders.customer_id', '=', 'customers.id');
-      });*/
+  async fetchAll() {
+    const data = this.customer_repo.fetchAll();
+    return data;
+  }
+
+  async create(input) {
+    // await this.validator.fire(input, CreateCustomerDto);
+    const data = this.customer_repo.create(input);
+    return data;
+  }
+
+  async totalOrderAmount() {
+    const data = await this.customer_repo.totalOrdersAmountByCustomers();
+    return data;
+  }
+
+  async totalNoOfOrders() {
+    const data = await this.customer_repo.totalNumberOforders();
+    return data;
+  }
+
+  async allOrdersData(id: number) {
+    const data = await this.customer_repo.orderData(id);
 
     return data;
   }

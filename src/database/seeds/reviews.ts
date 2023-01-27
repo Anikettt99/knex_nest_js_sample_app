@@ -1,0 +1,57 @@
+import { Knex } from 'knex';
+
+export async function seed(knex: Knex): Promise<void> {
+  // Deletes ALL existing entries
+  await knex('reviews').del();
+
+  // Inserts seed entries
+  await knex('reviews').insert([
+    { series_id: 1, reviewer_id: 1, rating: 8.0 },
+    { series_id: 1, reviewer_id: 2, rating: 7.5 },
+    { series_id: 1, reviewer_id: 3, rating: 8.5 },
+    { series_id: 1, reviewer_id: 4, rating: 7.7 },
+    { series_id: 1, reviewer_id: 5, rating: 8.9 },
+    { series_id: 2, reviewer_id: 1, rating: 8.1 },
+    { series_id: 2, reviewer_id: 4, rating: 6.0 },
+    { series_id: 2, reviewer_id: 3, rating: 8.0 },
+    { series_id: 2, reviewer_id: 6, rating: 8.4 },
+    { series_id: 2, reviewer_id: 5, rating: 9.9 },
+    { series_id: 3, reviewer_id: 1, rating: 7.0 },
+    { series_id: 3, reviewer_id: 6, rating: 7.5 },
+    { series_id: 3, reviewer_id: 4, rating: 8.0 },
+    { series_id: 3, reviewer_id: 3, rating: 7.1 },
+    { series_id: 3, reviewer_id: 5, rating: 8.0 },
+    { series_id: 4, reviewer_id: 1, rating: 7.5 },
+    { series_id: 4, reviewer_id: 3, rating: 7.8 },
+    { series_id: 4, reviewer_id: 4, rating: 8.3 },
+    { series_id: 4, reviewer_id: 2, rating: 7.6 },
+    { series_id: 4, reviewer_id: 5, rating: 8.5 },
+    { series_id: 5, reviewer_id: 1, rating: 9.5 },
+    { series_id: 5, reviewer_id: 3, rating: 9.0 },
+    { series_id: 5, reviewer_id: 4, rating: 9.1 },
+    { series_id: 5, reviewer_id: 2, rating: 9.3 },
+    { series_id: 5, reviewer_id: 5, rating: 9.9 },
+    { series_id: 6, reviewer_id: 2, rating: 6.5 },
+    { series_id: 6, reviewer_id: 3, rating: 7.8 },
+    { series_id: 6, reviewer_id: 4, rating: 8.8 },
+    { series_id: 6, reviewer_id: 2, rating: 8.4 },
+    { series_id: 6, reviewer_id: 5, rating: 9.1 },
+    { series_id: 7, reviewer_id: 2, rating: 9.1 },
+    { series_id: 7, reviewer_id: 5, rating: 9.7 },
+    { series_id: 8, reviewer_id: 4, rating: 8.5 },
+    { series_id: 8, reviewer_id: 2, rating: 7.8 },
+    { series_id: 8, reviewer_id: 6, rating: 8.8 },
+    { series_id: 8, reviewer_id: 5, rating: 9.3 },
+    { series_id: 9, reviewer_id: 2, rating: 5.5 },
+    { series_id: 9, reviewer_id: 3, rating: 6.8 },
+    { series_id: 9, reviewer_id: 4, rating: 5.8 },
+    { series_id: 9, reviewer_id: 6, rating: 4.3 },
+    { series_id: 9, reviewer_id: 5, rating: 4.5 },
+    { series_id: 10, reviewer_id: 5, rating: 9.9 },
+    { series_id: 13, reviewer_id: 3, rating: 8.0 },
+    { series_id: 13, reviewer_id: 4, rating: 7.2 },
+    { series_id: 14, reviewer_id: 2, rating: 8.5 },
+    { series_id: 14, reviewer_id: 3, rating: 8.9 },
+    { series_id: 14, reviewer_id: 4, rating: 8.9 },
+  ]);
+}

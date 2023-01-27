@@ -2,20 +2,19 @@ import { Module } from '@nestjs/common';
 import { KnexModule } from 'nest-knexjs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CoreModule } from './core/module';
 import { CustomersModule } from './customers/customers.module';
-import { DatabaseModule } from './database/database.module';
 import { OrdersModule } from './orders/orders.module';
 
 @Module({
-  imports: [CustomersModule, OrdersModule, DatabaseModule],
+  imports: [CoreModule, CustomersModule, OrdersModule],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
 
-/*
 //WORKING
-@Module({
+/*@Module({
   imports: [
     CustomersModule,
     OrdersModule,
